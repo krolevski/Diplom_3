@@ -25,6 +25,7 @@ public class PersonalAccountTests {
     String passwordTrue = PASSWORD_TRUE;
     String baseUrl = URL;
     String accessToken;
+
     @Before
     public void setUp() {
         driverRule.initDriver();
@@ -34,7 +35,6 @@ public class PersonalAccountTests {
         apiUrl.baseUrl();
         User user = new User(email, passwordTrue, name);
         userApi.creatingUser(user);
-        userApi.authUser(user);
     }
 
     @Step("Проверка перехода в Личный кабинет")
@@ -45,6 +45,13 @@ public class PersonalAccountTests {
         driver.get(baseUrl);
 
         MainPage objMainPage = new MainPage(driver);
+        objMainPage.personalAccountButtonClick();
+
+        AuthPage objAuthPage = new AuthPage(driver);
+        objAuthPage.setEmailField(email);
+        objAuthPage.setPasswordField(passwordTrue);
+        objAuthPage.enterButtonClick();
+
         objMainPage.personalAccountButtonClick();
 
         PersonalAccountPage objPersonalAccountPage = new PersonalAccountPage(driver);
@@ -60,6 +67,13 @@ public class PersonalAccountTests {
         driver.get(baseUrl);
 
         MainPage objMainPage = new MainPage(driver);
+        objMainPage.personalAccountButtonClick();
+
+        AuthPage objAuthPage = new AuthPage(driver);
+        objAuthPage.setEmailField(email);
+        objAuthPage.setPasswordField(passwordTrue);
+        objAuthPage.enterButtonClick();
+
         objMainPage.personalAccountButtonClick();
 
         PersonalAccountPage objPersonalAccountPage = new PersonalAccountPage(driver);
@@ -79,6 +93,13 @@ public class PersonalAccountTests {
         MainPage objMainPage = new MainPage(driver);
         objMainPage.personalAccountButtonClick();
 
+        AuthPage objAuthPage = new AuthPage(driver);
+        objAuthPage.setEmailField(email);
+        objAuthPage.setPasswordField(passwordTrue);
+        objAuthPage.enterButtonClick();
+
+        objMainPage.personalAccountButtonClick();
+
         PersonalAccountPage objPersonalAccountPage = new PersonalAccountPage(driver);
         objPersonalAccountPage.logoClick();
 
@@ -96,10 +117,16 @@ public class PersonalAccountTests {
         MainPage objMainPage = new MainPage(driver);
         objMainPage.personalAccountButtonClick();
 
+        AuthPage objAuthPage = new AuthPage(driver);
+        objAuthPage.setEmailField(email);
+        objAuthPage.setPasswordField(passwordTrue);
+        objAuthPage.enterButtonClick();
+
+        objMainPage.personalAccountButtonClick();
+
         PersonalAccountPage objPersonalAccountPage = new PersonalAccountPage(driver);
         objPersonalAccountPage.exitButtonClick();
 
-        AuthPage objAuthPage = new AuthPage(driver);
         boolean actual = objAuthPage.authHeaderIsDisplayed();
 
         Assert.assertTrue(actual);

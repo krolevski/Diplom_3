@@ -36,7 +36,7 @@ public class RegistrationTests extends DriverRule {
         apiUrl.baseUrl();
     }
 
-    @Step("Проверка возможности регисnрации пользователя с валидными данными")
+    @Step("Проверка возможности регистрации пользователя с валидными данными")
     @Test
     public void checkRegistrationNewUser() {
         User user = new User(EMAIL, PASSWORD_TRUE, NAME);
@@ -63,7 +63,6 @@ public class RegistrationTests extends DriverRule {
     @Step("Регистрация с невалидным паролем")
     @Test
     public void checkRegistrationNotValidPassword() {
-        User user = new User(EMAIL, PASSWORD_FALSE, NAME);
         WebDriver driver = driverRule.getDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
         driver.get(baseUrl);

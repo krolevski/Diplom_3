@@ -40,6 +40,7 @@ public class ConstructorTests {
         driver.get(baseUrl);
 
         MainPage objMainPage = new MainPage(driver);
+        objMainPage.fillingsButtonClick();
         objMainPage.bunsButtonClick();
 
         boolean actual = objMainPage.headerBunsIsDisplayed();
@@ -54,6 +55,7 @@ public class ConstructorTests {
         driver.get(baseUrl);
 
         MainPage objMainPage = new MainPage(driver);
+        objMainPage.fillingsButtonClick();
         objMainPage.saucesButtonClick();
 
         boolean actual = objMainPage.headerSaucesIsDisplayed();
