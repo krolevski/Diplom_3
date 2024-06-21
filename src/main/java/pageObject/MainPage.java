@@ -11,12 +11,18 @@ public class MainPage {
     private final By enterInAccountButton = By.xpath("//button[text()='Войти в аккаунт']");
     private final By createOrderButton = By.xpath(".//button[text()='Оформить заказ']");
     private final By headerBurger = By.xpath("//h1[text()='Соберите бургер']");
-    private final By bunsButton = By.xpath("//span[text()='Булки']");;
-    private final By headerBuns = By.xpath(".//span[text() ='Булки']/parent::div");
-    private final By saucesButton = By.xpath(".//span[text() ='Соусы']");
-    private final By headerSauces = By.xpath(".//h2[text() ='Соусы']");
-    private final By fillingsButton = By.xpath("//span[text()='Начинки']");
-    private final By headerFillings = By.xpath(".//h2[text() ='Соусы']");
+    private final By bunsButtonActiv = By.xpath("//div[@class='tab_tab__1SPyG " +
+            "tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Булки']");
+    private final By bunsButtonNoActiv = By.xpath("//div[@class='tab_tab__1SPyG  " +
+            "pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Булки']");
+    private final By saucesButtonActiv = By.xpath("//div[@class='tab_tab__1SPyG " +
+            "tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Соусы']");
+    private final By saucesButtonNoActive = By.xpath("//div[@class='tab_tab__1SPyG  " +
+            "pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Соусы']");
+    private final By fillingsButtonActiv = By.xpath("//div[@class='tab_tab__1SPyG " +
+            "tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Начинки']");
+    private final By fillingsButtonNoActiv =  By.xpath("//div[@class='tab_tab__1SPyG  " +
+            "pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Начинки']");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -46,31 +52,31 @@ public class MainPage {
 
     @Step("Нажать кнопку булки")
     public void bunsButtonClick() {
-        driver.findElement(bunsButton).click();
+        driver.findElement(bunsButtonNoActiv).click();
     }
 
     @Step("Видимость надписи Булки")
-    public boolean headerBunsIsDisplayed() {
-        return driver.findElement(headerBuns).isDisplayed();
+    public boolean bunsButtonIsDisplayed() {
+        return driver.findElement(bunsButtonActiv).isDisplayed();
     }
 
     @Step("Нажать кнопку Соусы")
     public void saucesButtonClick() {
-        driver.findElement(saucesButton).click();
+        driver.findElement(saucesButtonNoActive).click();
     }
 
-    @Step("Видиммость надписи Соусы")
-    public boolean headerSaucesIsDisplayed() {
-        return driver.findElement(headerSauces).isDisplayed();
+    @Step("Видимость надписи Соусы")
+    public boolean saucesButtonIsDisplayed() {
+        return driver.findElement(saucesButtonActiv).isDisplayed();
     }
 
     @Step("Нажать кнопку Начинки")
     public void fillingsButtonClick() {
-        driver.findElement(fillingsButton).click();
+        driver.findElement(fillingsButtonNoActiv).click();
     }
 
     @Step("Видимость надписи Начинки")
-    public boolean headerFillingsIsDisplayed() {
-        return driver.findElement(headerFillings).isDisplayed();
+    public boolean fillingsButtonIsDisplayed() {
+        return driver.findElement(fillingsButtonActiv).isDisplayed();
     }
 }
